@@ -1,0 +1,57 @@
+<!-- Default form contact -->
+<h2>Ajout d'un Post</h2>
+<form *ngIf="user" #form [formGroup]="postForm" (submit)="onSubmit()" class="text-center border border-light p-5">
+  <!-- Title -->
+  <div class="md-form">
+    <input mdbInput type="text" id="defaultContactFormName" class="form-control mb-4" formControlName="titre"
+           placeholder="Titre">
+    <div
+      *ngIf="postForm.controls['titre'].invalid && (postForm.controls['titre'].dirty || postForm.controls['titre'].touched)">
+      <mdb-error
+        *ngIf="postForm.controls['titre'].errors.required">
+        Titre est requis.
+      </mdb-error>
+      <mdb-error *ngIf="postForm.controls['titre'].errors.minlength">
+        Nom doit au moin contenir 4 char.
+      </mdb-error>
+    </div>
+  </div>
+  <!-- Email -->
+  <div class="md-form">
+    <input mdbInput type="text" id="defaultContactFormEmail" class="form-control mb-4" formControlName="date"
+           placeholder="date">
+    <div
+      *ngIf="postForm.controls['date'].invalid && (postForm.controls['date'].dirty || postForm.controls['date'].touched)">
+      <mdb-error
+        *ngIf="postForm.controls['date'].errors.required">
+        body est requis.
+      </mdb-error>
+    </div>
+  </div>
+  <div class="md-form">
+    <figure class="figure">
+      <img src="{{postForm.controls['img'].value}}" class="figure-img img-fluid z-depth-1"
+           alt="..." style="width: 400px">
+      <figcaption class="figure-caption">Titre pour l'image ci-dessus.</figcaption>
+    </figure>
+  </div>
+  <div class="md-form">
+    <textarea type="text" class="md-textarea form-control" formControlName="data" mdbInputDirective
+              placeholder="Body"></textarea>
+
+    <div
+      *ngIf="postForm.controls['data'].invalid && (postForm.controls['data'].dirty || postForm.controls['data'].touched)">
+      <mdb-error
+        *ngIf="postForm.controls['data'].errors.required">
+        date est requis.
+      </mdb-error>
+    </div>
+
+
+  </div>
+
+  <!-- Send button -->
+  <button [disabled]="postForm.invalid" class="btn btn-info " type="submit">Create</button>
+  <button class="btn btn-info " (click)="reset()">Reset</button>
+
+</form>

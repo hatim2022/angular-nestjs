@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-12 mx-auto mt-5"><h2
+    class="text-center"></h2></div>
+</div>
+<button class="btn btn-success" (click)="showadd()" *ngIf="!varx"> Ajouter Utilisateur </button>
+<button class="btn btn-danger" (click)="hideadd()" *ngIf="varx">  X </button>
+<app-user-add *ngIf="varx"></app-user-add>
+<app-users></app-users>

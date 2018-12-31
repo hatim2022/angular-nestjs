@@ -1,0 +1,6 @@
+
+<button class="btn btn-success" (click)="showadd()" *ngIf="!varx"> Ajouter un post a l'utilisateur </button>
+<button class="btn btn-danger" (click)="hideadd()" *ngIf="varx">  X </button>
+<app-add-posts *ngIf="varx"></app-add-posts>
+<app-posts></app-posts>
+

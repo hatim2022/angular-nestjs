@@ -1,0 +1,45 @@
+<!-- Default form contact -->
+<form #form [formGroup]="userForm" (submit)="onSubmit()"
+      class="text-center border border-light p-5">
+
+  <p class="h4 mb-4">Nouveau Utilisateur</p>
+
+  <!-- Name -->
+  <div class="md-form">
+    <input mdbInput type="text" id="defaultContactFormName" class="form-control mb-4" formControlName="name"
+           placeholder="Nom">
+    <div
+      *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)">
+      <mdb-error
+        *ngIf="userForm.controls['name'].errors.required">
+        Nom est requis.
+      </mdb-error>
+      <mdb-error *ngIf="userForm.controls['name'].errors.minlength">
+        Nom doit au moin contenir 4 char.
+      </mdb-error>
+    </div>
+
+
+  </div>
+  <!-- Email -->
+  <div class="md-form">
+    <input mdbInput type="email" id="defaultContactFormEmail" class="form-control mb-4" formControlName="email"
+           placeholder="E-mail">
+    <div
+      *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+      <mdb-error
+        *ngIf="userForm.controls['email'].errors.required">
+        Email est requis.
+      </mdb-error>
+      <mdb-error *ngIf="userForm.controls['email'].errors.email">
+        Format d'Email inconnu.
+      </mdb-error>
+    </div>
+
+
+  </div>
+
+  <!-- Send button -->
+  <button [disabled]="userForm.invalid" class="btn btn-success " type="submit">Ajouter</button>
+
+</form>
